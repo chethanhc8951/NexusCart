@@ -6,8 +6,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.math.BigDecimal;
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/products")
@@ -18,8 +21,21 @@ public class ProductController {
 
 
     @PostMapping
-    public Product createProduct(@RequestBody Product product) {
-        return service.createProduct(product);
+    public Product createProduct(
+            @RequestParam("name") String name,
+            @RequestParam("description") String description,
+            @RequestParam("price") BigDecimal price,
+            @RequestParam("skuCode") String skuCode,
+            @RequestParam(value = "image", required = false) MultipartFile file
+    ) {
+        Product product = Product.builder()
+                .name(name)
+                .description(description)
+                .price(price)
+                .skuCode(skuCode)
+                .build();
+
+        return service.createProduct(product, file);
     }
 
     @GetMapping

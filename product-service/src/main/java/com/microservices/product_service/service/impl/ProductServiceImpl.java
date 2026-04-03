@@ -2,9 +2,11 @@ package com.microservices.product_service.service.impl;
 
 import com.microservices.product_service.model.Product;
 import com.microservices.product_service.repository.ProductRepository;
+import com.microservices.product_service.service.CloudinaryService;
 import com.microservices.product_service.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -15,7 +17,16 @@ public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository repository;
 
-    public Product createProduct(Product product) {
+    private final CloudinaryService cloudinaryService;
+
+    @Override
+    public Product createProduct(Product product, MultipartFile file) {
+
+        if (file != null && !file.isEmpty()) {
+            String imageUrl = cloudinaryService.uploadFile(file);
+            product.setImageUrl(imageUrl);
+        }
+
         return repository.save(product);
     }
 

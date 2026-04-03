@@ -2,12 +2,13 @@ package com.microservices.product_service.service;
 
 import com.microservices.product_service.model.Product;
 import com.microservices.product_service.service.impl.ProductServiceImpl;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
 public interface ProductService {
 
-    Product createProduct(Product product);
+    Product createProduct(Product product, MultipartFile file);
 
     List<Product> getAllProducts();
 

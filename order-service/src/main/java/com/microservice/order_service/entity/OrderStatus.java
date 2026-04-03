@@ -1,0 +1,6 @@
+package com.microservice.order_service.entity;
+public enum OrderStatus {
+    CREATED,
+    PAID,
+    CANCELLED
+}
