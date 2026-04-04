@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply text-gray-900 antialiased;
+    font-family: var(--font-sans);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-50;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-200 rounded-full hover:bg-gray-300 transition-colors;
+}
+
+/* Toast Overrides */
+.Toastify__toast {
+  @apply !rounded-2xl !border !border-gray-100 !shadow-xl;
+}
+
+.Toastify__toast--success {
+  @apply !bg-emerald-50 !text-emerald-800;
+}
+
+.Toastify__toast--error {
+  @apply !bg-red-50 !text-red-800;
+}
