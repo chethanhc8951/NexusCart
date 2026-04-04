@@ -5,10 +5,8 @@ import com.microservice.order_service.service.OrderService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 @RequestMapping("/orders")
@@ -25,5 +23,15 @@ public class OrderController {
 
         System.out.println("Incoming userName: oc" + username);
         return ResponseEntity.ok(orderService.placeOrder(username));
+    }
+
+    @GetMapping("/my-orders")
+    public ResponseEntity<List<Orders>> getMyOrders(HttpServletRequest request) {
+
+        String username = request.getHeader("username"); // logged-in user
+
+        List<Orders> orders = orderService.getUserOrders(username);
+
+        return ResponseEntity.ok(orders);
     }
 }

@@ -29,4 +29,6 @@ public class Product {
     private String skuCode;
 
     private String imageUrl;
+
+    private Integer stock; // ✅ ADD THIS
 }

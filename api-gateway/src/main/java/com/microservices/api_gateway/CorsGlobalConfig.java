@@ -12,7 +12,7 @@ public class CorsGlobalConfig {
         org.springframework.web.cors.CorsConfiguration config =
                 new org.springframework.web.cors.CorsConfiguration();
 
-        config.addAllowedOrigin("http://localhost:5173"); // frontend
+        config.addAllowedOrigin("http://localhost:3000"); // frontend
         config.addAllowedMethod("*");
         config.addAllowedHeader("*");
         config.setAllowCredentials(true);

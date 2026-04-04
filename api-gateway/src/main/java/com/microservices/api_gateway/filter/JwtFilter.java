@@ -67,7 +67,7 @@ public class JwtFilter implements GlobalFilter, Ordered {
 
 
         String authHeaderr = request.getHeaders().getFirst("Authorization");
-        System.out.println("AUTH HEADER: " + authHeaderr);
+
 
 
 

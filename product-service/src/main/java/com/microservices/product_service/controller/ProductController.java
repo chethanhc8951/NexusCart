@@ -26,6 +26,7 @@ public class ProductController {
             @RequestParam("description") String description,
             @RequestParam("price") BigDecimal price,
             @RequestParam("skuCode") String skuCode,
+            @RequestParam("stock") Integer stock, // ✅ ADD THIS
             @RequestParam(value = "image", required = false) MultipartFile file
     ) {
         Product product = Product.builder()
@@ -33,6 +34,7 @@ public class ProductController {
                 .description(description)
                 .price(price)
                 .skuCode(skuCode)
+                .stock(stock) // ✅ SET STOCK
                 .build();
 
         return service.createProduct(product, file);

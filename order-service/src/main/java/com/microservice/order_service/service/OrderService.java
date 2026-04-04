@@ -48,4 +48,9 @@ public class OrderService {
 
         return savedOrder;
     }
+
+
+    public List<Orders> getUserOrders(String username) {
+        return orderRepository.findByUsernameOrderByCreatedAtDesc(username);
+    }
 }
